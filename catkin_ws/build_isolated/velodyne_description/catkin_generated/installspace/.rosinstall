@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/install_isolated/setup.sh
+    local-name: /home/votinh/DRL-Capstone2/catkin_ws/install_isolated/setup.sh

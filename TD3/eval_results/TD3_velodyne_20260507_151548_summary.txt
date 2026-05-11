@@ -1,0 +1,12 @@
+Model: TD3_velodyne
+Timestamp: 20260507_151548
+Total episodes: 100
+
+SUCCESS rate  : 59.0%  (59 eps)
+COLLISION rate: 37.0%  (37 eps)
+TIMEOUT rate  : 4.0%  (4 eps)
+
+Avg reward : 12.195 ± 106.087
+Min reward : -258.429
+Max reward : 116.91
+Avg steps (success only): 57.7

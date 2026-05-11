@@ -13,7 +13,12 @@
   <arg name="debug" default="false"/>
   <arg name="physics" default="ode"/>
   <arg name="verbose" default="false"/>
-  <arg name="world_name" default="Kitchen.world"/> <!-- Đổi map ở đây -->
+  <!-- <arg name="world_name" default="Kitchen.world"/> -->
+  <!-- <arg name="world_name" default="static_lv3.world"/> -->
+  <arg name="world_name" default="warehouse_dynamic.world"/>
+
+  
+  
   <arg name="respawn_gazebo" default="true"/>
   <arg name="use_clock_frequency" default="false"/>
   <arg name="pub_clock_frequency" default="1000"/>

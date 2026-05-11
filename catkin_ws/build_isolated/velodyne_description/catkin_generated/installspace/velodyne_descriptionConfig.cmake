@@ -67,14 +67,14 @@ set(velodyne_description_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(velodyne_description_SOURCE_PREFIX /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_description)
-  set(velodyne_description_DEVEL_PREFIX /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/devel_isolated/velodyne_description)
+  set(velodyne_description_SOURCE_PREFIX /home/votinh/DRL-Capstone2/catkin_ws/src/velodyne_simulator/velodyne_description)
+  set(velodyne_description_DEVEL_PREFIX /home/votinh/DRL-Capstone2/catkin_ws/devel_isolated/velodyne_description)
   set(velodyne_description_INSTALL_PREFIX "")
   set(velodyne_description_PREFIX ${velodyne_description_DEVEL_PREFIX})
 else()
   set(velodyne_description_SOURCE_PREFIX "")
   set(velodyne_description_DEVEL_PREFIX "")
-  set(velodyne_description_INSTALL_PREFIX /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/install_isolated)
+  set(velodyne_description_INSTALL_PREFIX /home/votinh/DRL-Capstone2/catkin_ws/install_isolated)
   set(velodyne_description_PREFIX ${velodyne_description_INSTALL_PREFIX})
 endif()
 
@@ -156,7 +156,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/install_isolated/lib;/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/devel_isolated/multi_robot_scenario/lib;/opt/ros/noetic/lib)
+    foreach(path /home/votinh/DRL-Capstone2/catkin_ws/install_isolated/lib;/home/votinh/DRL-Capstone2/catkin_ws/devel_isolated/multi_robot_scenario/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

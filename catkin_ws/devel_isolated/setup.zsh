@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 # generated from catkin.builder Python module
 
-. "/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/devel_isolated/velodyne_simulator/setup.zsh"
+. "/home/votinh/DRL-Capstone2/catkin_ws/devel_isolated/velodyne_simulator/setup.zsh"

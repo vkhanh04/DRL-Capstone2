@@ -1,4 +1,4 @@
-prefix=/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/install_isolated
+prefix=/home/votinh/DRL-Capstone2/catkin_ws/install_isolated
 
 Name: multi_robot_scenario
 Description: Description of multi_robot_scenario

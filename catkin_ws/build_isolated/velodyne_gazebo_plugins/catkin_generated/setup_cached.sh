@@ -7,6 +7,6 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/devel_isolated/velodyne_gazebo_plugins:$CMAKE_PREFIX_PATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/devel_isolated/velodyne_gazebo_plugins/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/home/votinh/DRL-Capstone2/catkin_ws/devel_isolated/velodyne_gazebo_plugins:$CMAKE_PREFIX_PATH"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/votinh/DRL-Capstone2/catkin_ws/devel_isolated/velodyne_gazebo_plugins/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROS_PACKAGE_PATH="/home/votinh/DRL-Capstone2/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins:$ROS_PACKAGE_PATH"

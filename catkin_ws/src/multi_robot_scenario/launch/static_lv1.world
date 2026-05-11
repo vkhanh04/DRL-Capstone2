@@ -1,0 +1,497 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="warehouse">
+
+    <!-- ═══════════════════════════════════════════
+         LIGHTING
+    ═══════════════════════════════════════════ -->
+    <light name="sun" type="directional">
+      <cast_shadows>1</cast_shadows>
+      <pose frame="">0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.5 -1</direction>
+    </light>
+
+    <!-- ═══════════════════════════════════════════
+         GROUND PLANE
+    ═══════════════════════════════════════════ -->
+    <model name="ground_plane">
+      <static>1</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode><mu>100</mu><mu2>50</mu2></ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ═══════════════════════════════════════════
+         PHYSICS
+    ═══════════════════════════════════════════ -->
+    <gravity>0 0 -9.8</gravity>
+    <physics name="default_physics" default="0" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+
+    <!-- ═══════════════════════════════════════════
+         OUTER BOUNDARY WALLS  (10 x 10 m, same as Kitchen)
+         Center = (0,0). Walls at ±5.0 m.
+         Wall thickness = 0.2 m, height = 1.0 m
+    ═══════════════════════════════════════════ -->
+    <model name="warehouse_walls">
+      <static>1</static>
+
+      <!-- North wall  y = +5.0 -->
+      <link name="wall_north">
+        <pose frame="">0 5.0 0 0 0 0</pose>
+        <collision name="col">
+          <pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>10.4 0.2 1.0</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>10.4 0.2 1.0</size></box></geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+
+      <!-- South wall  y = -5.0 -->
+      <link name="wall_south">
+        <pose frame="">0 -5.0 0 0 0 0</pose>
+        <collision name="col">
+          <pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>10.4 0.2 1.0</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>10.4 0.2 1.0</size></box></geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+
+      <!-- East wall  x = +5.0 -->
+      <link name="wall_east">
+        <pose frame="">5.0 0 0 0 0 0</pose>
+        <collision name="col">
+          <pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.2 10.0 1.0</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.2 10.0 1.0</size></box></geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+
+      <!-- West wall  x = -5.0 -->
+      <link name="wall_west">
+        <pose frame="">-5.0 0 0 0 0 0</pose>
+        <collision name="col">
+          <pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.2 10.0 1.0</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.2 10.0 1.0</size></box></geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+
+    </model>
+
+    <!-- ═══════════════════════════════════════════
+         SHELF ROW 1  (North aisle)
+         Two shelf segments with a 1.2 m gap in the middle
+         so the robot can pass through either side.
+
+         Shelf dims: 3.2 m long × 0.3 m wide × 0.8 m tall
+         Row y = +2.5
+    ═══════════════════════════════════════════ -->
+    <model name="shelf_1a">
+      <static>1</static>
+      <pose frame="">-2.35 2.5 0 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>3.2 0.3 0.8</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>3.2 0.3 0.8</size></box></geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/WoodFloor</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_1b">
+      <static>1</static>
+      <pose frame="">2.35 2.5 0 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>3.2 0.3 0.8</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>3.2 0.3 0.8</size></box></geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/WoodFloor</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ═══════════════════════════════════════════
+         SHELF ROW 2  (Middle aisle — offset gap to the right)
+         Gap is on the east side this time, forcing the robot
+         to choose a different path than Row 1.
+
+         Row y = 0.0
+    ═══════════════════════════════════════════ -->
+    <model name="shelf_2a">
+      <static>1</static>
+      <pose frame="">-2.85 0.0 0 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>3.8 0.3 0.8</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>3.8 0.3 0.8</size></box></geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/WoodFloor</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_2b">
+      <static>1</static>
+      <pose frame="">2.1 0.0 0 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>2.2 0.3 0.8</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>2.2 0.3 0.8</size></box></geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/WoodFloor</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ═══════════════════════════════════════════
+         SHELF ROW 3  (South aisle — gap on the west side)
+         Row y = -2.5
+    ═══════════════════════════════════════════ -->
+    <model name="shelf_3a">
+      <static>1</static>
+      <pose frame="">0.6 -2.5 0 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>3.0 0.3 0.8</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>3.0 0.3 0.8</size></box></geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/WoodFloor</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_3b">
+      <static>1</static>
+      <pose frame="">3.45 -2.5 0 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>2.5 0.3 0.8</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>2.5 0.3 0.8</size></box></geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/WoodFloor</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ═══════════════════════════════════════════
+         CENTRE PILLAR
+         A single square pillar at (0, 0) — the robot must
+         decide which side to go around when heading diagonally.
+         Size: 0.4 × 0.4 × 1.0 m
+    ═══════════════════════════════════════════ -->
+    <model name="centre_pillar">
+      <static>1</static>
+      <pose frame="">0.0 0.0 0 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.4 0.4 1.0</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.4 0.4 1.0</size></box></geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkGrey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ═══════════════════════════════════════════
+         CARDBOARD BOXES  (4 dynamic boxes, same as original)
+         Initial positions spread across the arena.
+         Code in env.py will randomize them on each episode reset.
+         Names MUST match: cardboard_box_0 .. cardboard_box_3
+    ═══════════════════════════════════════════ -->
+    <model name="cardboard_box_0">
+      <pose frame="">3.5 3.5 0.149 0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>2.0</mass>
+          <inertia><ixx>0.0267</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0267</iyy><iyz>0</iyz><izz>0.0267</izz></inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box><size>0.3 0.3 0.3</size></box>
+          </geometry>
+          <surface>
+            <friction><ode><mu>1</mu><mu2>1</mu2></ode></friction>
+            <contact><ode><kp>1e+07</kp><kd>1</kd><min_depth>0.001</min_depth><max_vel>0.1</max_vel></ode></contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <pose frame="">0 0 -0.15 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://cardboard_box/meshes/cardboard_box.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="cardboard_box_1">
+      <pose frame="">-3.5 3.5 0.149 0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>2.0</mass>
+          <inertia><ixx>0.0267</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0267</iyy><iyz>0</iyz><izz>0.0267</izz></inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box><size>0.3 0.3 0.3</size></box>
+          </geometry>
+          <surface>
+            <friction><ode><mu>1</mu><mu2>1</mu2></ode></friction>
+            <contact><ode><kp>1e+07</kp><kd>1</kd><min_depth>0.001</min_depth><max_vel>0.1</max_vel></ode></contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <pose frame="">0 0 -0.15 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://cardboard_box/meshes/cardboard_box.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="cardboard_box_2">
+      <pose frame="">3.5 -3.5 0.149 0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>2.0</mass>
+          <inertia><ixx>0.0267</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0267</iyy><iyz>0</iyz><izz>0.0267</izz></inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box><size>0.3 0.3 0.3</size></box>
+          </geometry>
+          <surface>
+            <friction><ode><mu>1</mu><mu2>1</mu2></ode></friction>
+            <contact><ode><kp>1e+07</kp><kd>1</kd><min_depth>0.001</min_depth><max_vel>0.1</max_vel></ode></contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <pose frame="">0 0 -0.15 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://cardboard_box/meshes/cardboard_box.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="cardboard_box_3">
+      <pose frame="">-3.5 -3.5 0.149 0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>2.0</mass>
+          <inertia><ixx>0.0267</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0267</iyy><iyz>0</iyz><izz>0.0267</izz></inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box><size>0.3 0.3 0.3</size></box>
+          </geometry>
+          <surface>
+            <friction><ode><mu>1</mu><mu2>1</mu2></ode></friction>
+            <contact><ode><kp>1e+07</kp><kd>1</kd><min_depth>0.001</min_depth><max_vel>0.1</max_vel></ode></contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <pose frame="">0 0 -0.15 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://cardboard_box/meshes/cardboard_box.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ═══════════════════════════════════════════
+         INITIAL WORLD STATE
+    ═══════════════════════════════════════════ -->
+    <state world_name="warehouse">
+      <sim_time>0 0</sim_time>
+      <real_time>0 0</real_time>
+      <wall_time>0 0</wall_time>
+      <iterations>0</iterations>
+      <model name="ground_plane">
+        <pose frame="">0 0 0 0 0 0</pose>
+        <scale>1 1 1</scale>
+        <link name="link"><pose frame="">0 0 0 0 0 0</pose></link>
+      </model>
+      <model name="cardboard_box_0">
+        <pose frame="">3.5 3.5 0.149 0 0 0</pose>
+        <scale>1 1 1</scale>
+        <link name="link"><pose frame="">3.5 3.5 0.149 0 0 0</pose></link>
+      </model>
+      <model name="cardboard_box_1">
+        <pose frame="">-3.5 3.5 0.149 0 0 0</pose>
+        <scale>1 1 1</scale>
+        <link name="link"><pose frame="">-3.5 3.5 0.149 0 0 0</pose></link>
+      </model>
+      <model name="cardboard_box_2">
+        <pose frame="">3.5 -3.5 0.149 0 0 0</pose>
+        <scale>1 1 1</scale>
+        <link name="link"><pose frame="">3.5 -3.5 0.149 0 0 0</pose></link>
+      </model>
+      <model name="cardboard_box_3">
+        <pose frame="">-3.5 -3.5 0.149 0 0 0</pose>
+        <scale>1 1 1</scale>
+        <link name="link"><pose frame="">-3.5 -3.5 0.149 0 0 0</pose></link>
+      </model>
+    </state>
+
+    <!-- ═══════════════════════════════════════════
+         CAMERA (top-down view for easy monitoring)
+    ═══════════════════════════════════════════ -->
+    <gui fullscreen="0">
+      <camera name="user_camera">
+        <pose frame="">0 0 28 0 1.5708 0</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+
+  </world>
+</sdf>

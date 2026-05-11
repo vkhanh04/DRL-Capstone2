@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_simulator
+CMAKE_SOURCE_DIR = /home/votinh/DRL-Capstone2/catkin_ws/src/velodyne_simulator/velodyne_simulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/velodyne_simulator
+CMAKE_BINARY_DIR = /home/votinh/DRL-Capstone2/catkin_ws/build_isolated/velodyne_simulator
 
 # Utility rule file for download_extra_data.
 
@@ -67,6 +67,6 @@ CMakeFiles/download_extra_data.dir/clean:
 .PHONY : CMakeFiles/download_extra_data.dir/clean
 
 CMakeFiles/download_extra_data.dir/depend:
-	cd /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/velodyne_simulator && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_simulator /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_simulator /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/velodyne_simulator /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/velodyne_simulator /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/velodyne_simulator/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/votinh/DRL-Capstone2/catkin_ws/build_isolated/velodyne_simulator && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/votinh/DRL-Capstone2/catkin_ws/src/velodyne_simulator/velodyne_simulator /home/votinh/DRL-Capstone2/catkin_ws/src/velodyne_simulator/velodyne_simulator /home/votinh/DRL-Capstone2/catkin_ws/build_isolated/velodyne_simulator /home/votinh/DRL-Capstone2/catkin_ws/build_isolated/velodyne_simulator /home/votinh/DRL-Capstone2/catkin_ws/build_isolated/velodyne_simulator/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/download_extra_data.dir/depend
 

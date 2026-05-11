@@ -1,22 +1,21 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
-Change Dir: /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp
+Change Dir: /home/votinh/DRL-Capstone2/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_1c7f7/fast && /usr/bin/make -f CMakeFiles/cmTC_1c7f7.dir/build.make CMakeFiles/cmTC_1c7f7.dir/build
-make[1]: Entering directory '/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp'
-make[1]: Warning: File 'CMakeFiles/cmTC_1c7f7.dir/progress.make' has modification time 0.016 s in the future
-Building C object CMakeFiles/cmTC_1c7f7.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_1c7f7.dir/src.c.o   -c /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_1c7f7
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c7f7.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_1c7f7.dir/src.c.o  -o cmTC_1c7f7 
-/usr/bin/ld: CMakeFiles/cmTC_1c7f7.dir/src.c.o: in function `main':
+Run Build Command(s):/usr/bin/make cmTC_31cfd/fast && /usr/bin/make -f CMakeFiles/cmTC_31cfd.dir/build.make CMakeFiles/cmTC_31cfd.dir/build
+make[1]: Entering directory '/home/votinh/DRL-Capstone2/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_31cfd.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_31cfd.dir/src.c.o   -c /home/votinh/DRL-Capstone2/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_31cfd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_31cfd.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_31cfd.dir/src.c.o  -o cmTC_31cfd 
+/usr/bin/ld: CMakeFiles/cmTC_31cfd.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_1c7f7.dir/build.make:87: cmTC_1c7f7] Error 1
-make[1]: Leaving directory '/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_1c7f7/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_31cfd.dir/build.make:87: cmTC_31cfd] Error 1
+make[1]: Leaving directory '/home/votinh/DRL-Capstone2/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_31cfd/fast] Error 2
 
 
 Source file was:
@@ -40,22 +39,20 @@ int main(void)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp
+Change Dir: /home/votinh/DRL-Capstone2/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_a7f25/fast && make: Warning: File 'Makefile' has modification time 0.012 s in the future
-/usr/bin/make -f CMakeFiles/cmTC_a7f25.dir/build.make CMakeFiles/cmTC_a7f25.dir/build
-make[1]: Entering directory '/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp'
-make[1]: Warning: File 'CMakeFiles/cmTC_a7f25.dir/progress.make' has modification time 0.043 s in the future
-Building C object CMakeFiles/cmTC_a7f25.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_a7f25.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
-Linking C executable cmTC_a7f25
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a7f25.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_a7f25.dir/CheckFunctionExists.c.o  -o cmTC_a7f25  -lpthreads 
+Run Build Command(s):/usr/bin/make cmTC_19884/fast && /usr/bin/make -f CMakeFiles/cmTC_19884.dir/build.make CMakeFiles/cmTC_19884.dir/build
+make[1]: Entering directory '/home/votinh/DRL-Capstone2/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_19884.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_19884.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_19884
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_19884.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_19884.dir/CheckFunctionExists.c.o  -o cmTC_19884  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_a7f25.dir/build.make:87: cmTC_a7f25] Error 1
-make[1]: Leaving directory '/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_a7f25/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_19884.dir/build.make:87: cmTC_19884] Error 1
+make[1]: Leaving directory '/home/votinh/DRL-Capstone2/catkin_ws/build_isolated/multi_robot_scenario/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_19884/fast] Error 2
 
 
 

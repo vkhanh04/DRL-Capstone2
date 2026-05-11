@@ -1,0 +1,340 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="warehouse">
+
+    <light name="sun" type="directional">
+      <cast_shadows>1</cast_shadows>
+      <pose frame="">0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.5 -1</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>1</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane><normal>0 0 1</normal><size>100 100</size></plane>
+          </geometry>
+          <surface>
+            <friction><ode><mu>100</mu><mu2>50</mu2></ode></friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane><normal>0 0 1</normal><size>100 100</size></plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <gravity>0 0 -9.8</gravity>
+    <physics name="default_physics" default="0" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+
+    <!-- ═══════════════════════════════════════════
+         OUTER WALLS  (10 x 10 m, cùng kích thước Kitchen)
+    ═══════════════════════════════════════════ -->
+    <model name="warehouse_walls">
+      <static>1</static>
+
+      <link name="wall_north">
+        <pose frame="">0 5.0 0 0 0 0</pose>
+        <collision name="col"><pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>10.4 0.2 1.0</size></box></geometry>
+        </collision>
+        <visual name="vis"><pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>10.4 0.2 1.0</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Grey</name></script></material>
+        </visual>
+      </link>
+
+      <link name="wall_south">
+        <pose frame="">0 -5.0 0 0 0 0</pose>
+        <collision name="col"><pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>10.4 0.2 1.0</size></box></geometry>
+        </collision>
+        <visual name="vis"><pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>10.4 0.2 1.0</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Grey</name></script></material>
+        </visual>
+      </link>
+
+      <link name="wall_east">
+        <pose frame="">5.0 0 0 0 0 0</pose>
+        <collision name="col"><pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.2 10.0 1.0</size></box></geometry>
+        </collision>
+        <visual name="vis"><pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.2 10.0 1.0</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Grey</name></script></material>
+        </visual>
+      </link>
+
+      <link name="wall_west">
+        <pose frame="">-5.0 0 0 0 0 0</pose>
+        <collision name="col"><pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.2 10.0 1.0</size></box></geometry>
+        </collision>
+        <visual name="vis"><pose frame="">0 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.2 10.0 1.0</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Grey</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ═══════════════════════════════════════════
+         4 KỆ HÀNG NHỎ — đặt lệch nhau, không đối xứng
+         Mỗi kệ: 1.8 x 0.25 x 0.8 m (nhỏ hơn bản trước)
+         Xoay xen kẽ ngang/dọc để tạo layout tự nhiên hơn
+    ═══════════════════════════════════════════ -->
+
+    <!-- Kệ A: tây bắc, nằm ngang -->
+    <model name="shelf_a">
+      <static>1</static>
+      <pose frame="">-2.8 3.1 0 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>1.8 0.25 0.8</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>1.8 0.25 0.8</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/WoodFloor</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Kệ B: đông bắc, nằm dọc -->
+    <model name="shelf_b">
+      <static>1</static>
+      <pose frame="">3.3 2.2 0 0 0 1.5708</pose>
+      <link name="link">
+        <collision name="col">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>1.8 0.25 0.8</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>1.8 0.25 0.8</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/WoodFloor</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Kệ C: giữa hơi lệch tây, nằm ngang -->
+    <model name="shelf_c">
+      <static>1</static>
+      <pose frame="">-1.5 -1.2 0 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>1.8 0.25 0.8</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>1.8 0.25 0.8</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/WoodFloor</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Kệ D: đông nam, nằm dọc -->
+    <model name="shelf_d">
+      <static>1</static>
+      <pose frame="">2.6 -3.0 0 0 0 1.5708</pose>
+      <link name="link">
+        <collision name="col">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>1.8 0.25 0.8</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <pose frame="">0 0 0.4 0 0 0</pose>
+          <geometry><box><size>1.8 0.25 0.8</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/WoodFloor</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ═══════════════════════════════════════════
+         CARDBOARD BOXES — 4 hộp rải rác, góc xoay ngẫu nhiên
+         Tên PHẢI là cardboard_box_0 .. cardboard_box_3
+         env.py sẽ random lại vị trí mỗi episode
+    ═══════════════════════════════════════════ -->
+    <model name="cardboard_box_0">
+      <!-- góc đông bắc thoáng -->
+      <pose frame="">2.1 4.0 0.149 0 0 0.4</pose>
+      <link name="link">
+        <inertial>
+          <mass>2.0</mass>
+          <inertia><ixx>0.0267</ixx><ixy>0</ixy><ixz>0</ixz>
+                   <iyy>0.0267</iyy><iyz>0</iyz><izz>0.0267</izz></inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry><box><size>0.3 0.3 0.3</size></box></geometry>
+          <surface>
+            <friction><ode><mu>1</mu><mu2>1</mu2></ode></friction>
+            <contact><ode><kp>1e+07</kp><kd>1</kd>
+              <min_depth>0.001</min_depth><max_vel>0.1</max_vel></ode></contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <pose frame="">0 0 -0.15 0 0 0</pose>
+          <geometry>
+            <mesh><uri>model://cardboard_box/meshes/cardboard_box.dae</uri>
+            <scale>1 1 1</scale></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="cardboard_box_1">
+      <!-- giữa arena, hơi lệch tây -->
+      <pose frame="">-0.8 0.9 0.149 0 0 1.1</pose>
+      <link name="link">
+        <inertial>
+          <mass>2.0</mass>
+          <inertia><ixx>0.0267</ixx><ixy>0</ixy><ixz>0</ixz>
+                   <iyy>0.0267</iyy><iyz>0</iyz><izz>0.0267</izz></inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry><box><size>0.3 0.3 0.3</size></box></geometry>
+          <surface>
+            <friction><ode><mu>1</mu><mu2>1</mu2></ode></friction>
+            <contact><ode><kp>1e+07</kp><kd>1</kd>
+              <min_depth>0.001</min_depth><max_vel>0.1</max_vel></ode></contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <pose frame="">0 0 -0.15 0 0 0</pose>
+          <geometry>
+            <mesh><uri>model://cardboard_box/meshes/cardboard_box.dae</uri>
+            <scale>1 1 1</scale></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="cardboard_box_2">
+      <!-- nam, lệch đông -->
+      <pose frame="">1.4 -3.6 0.149 0 0 2.3</pose>
+      <link name="link">
+        <inertial>
+          <mass>2.0</mass>
+          <inertia><ixx>0.0267</ixx><ixy>0</ixy><ixz>0</ixz>
+                   <iyy>0.0267</iyy><iyz>0</iyz><izz>0.0267</izz></inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry><box><size>0.3 0.3 0.3</size></box></geometry>
+          <surface>
+            <friction><ode><mu>1</mu><mu2>1</mu2></ode></friction>
+            <contact><ode><kp>1e+07</kp><kd>1</kd>
+              <min_depth>0.001</min_depth><max_vel>0.1</max_vel></ode></contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <pose frame="">0 0 -0.15 0 0 0</pose>
+          <geometry>
+            <mesh><uri>model://cardboard_box/meshes/cardboard_box.dae</uri>
+            <scale>1 1 1</scale></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="cardboard_box_3">
+      <!-- tây nam -->
+      <pose frame="">-3.7 -1.8 0.149 0 0 0.8</pose>
+      <link name="link">
+        <inertial>
+          <mass>2.0</mass>
+          <inertia><ixx>0.0267</ixx><ixy>0</ixy><ixz>0</ixz>
+                   <iyy>0.0267</iyy><iyz>0</iyz><izz>0.0267</izz></inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry><box><size>0.3 0.3 0.3</size></box></geometry>
+          <surface>
+            <friction><ode><mu>1</mu><mu2>1</mu2></ode></friction>
+            <contact><ode><kp>1e+07</kp><kd>1</kd>
+              <min_depth>0.001</min_depth><max_vel>0.1</max_vel></ode></contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <pose frame="">0 0 -0.15 0 0 0</pose>
+          <geometry>
+            <mesh><uri>model://cardboard_box/meshes/cardboard_box.dae</uri>
+            <scale>1 1 1</scale></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ═══ WORLD STATE ═══ -->
+    <state world_name="warehouse">
+      <sim_time>0 0</sim_time>
+      <real_time>0 0</real_time>
+      <wall_time>0 0</wall_time>
+      <iterations>0</iterations>
+      <model name="ground_plane">
+        <pose frame="">0 0 0 0 0 0</pose><scale>1 1 1</scale>
+        <link name="link"><pose frame="">0 0 0 0 0 0</pose></link>
+      </model>
+      <model name="cardboard_box_0">
+        <pose frame="">2.1 4.0 0.149 0 0 0.4</pose><scale>1 1 1</scale>
+        <link name="link"><pose frame="">2.1 4.0 0.149 0 0 0.4</pose></link>
+      </model>
+      <model name="cardboard_box_1">
+        <pose frame="">-0.8 0.9 0.149 0 0 1.1</pose><scale>1 1 1</scale>
+        <link name="link"><pose frame="">-0.8 0.9 0.149 0 0 1.1</pose></link>
+      </model>
+      <model name="cardboard_box_2">
+        <pose frame="">1.4 -3.6 0.149 0 0 2.3</pose><scale>1 1 1</scale>
+        <link name="link"><pose frame="">1.4 -3.6 0.149 0 0 2.3</pose></link>
+      </model>
+      <model name="cardboard_box_3">
+        <pose frame="">-3.7 -1.8 0.149 0 0 0.8</pose><scale>1 1 1</scale>
+        <link name="link"><pose frame="">-3.7 -1.8 0.149 0 0 0.8</pose></link>
+      </model>
+    </state>
+
+    <gui fullscreen="0">
+      <camera name="user_camera">
+        <pose frame="">0 0 28 0 1.5708 0</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+
+  </world>
+</sdf>

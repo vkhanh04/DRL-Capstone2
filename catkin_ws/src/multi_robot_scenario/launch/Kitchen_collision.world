@@ -1,0 +1,150 @@
+<sdf version='1.6'>
+  <world name='warehouse_recognizable'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.5 -1</direction>
+    </light>
+
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+          <surface><friction><ode><mu>100</mu><mu2>50</mu2></ode></friction><contact><ode/></contact></surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <gravity>0 0 -9.8</gravity>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+
+    <!-- Tường ngoài 20x20 -->
+    <model name='outer_walls'>
+      <static>1</static>
+      <pose>0 0 0 0 0 0</pose>
+      <link name='Wall_North'><pose>0 10 1 0 0 0</pose>
+        <visual name='visual'><geometry><box><size>20 0.2 2</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Bricks</name></script></material></visual>
+        <collision name='collision'><geometry><box><size>20 0.2 2</size></box></geometry></collision>
+      </link>
+      <link name='Wall_South'><pose>0 -10 1 0 0 3.14159</pose>
+        <visual name='visual'><geometry><box><size>20 0.2 2</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Bricks</name></script></material></visual>
+        <collision name='collision'><geometry><box><size>20 0.2 2</size></box></geometry></collision>
+      </link>
+      <link name='Wall_East'><pose>10 0 1 0 0 -1.5708</pose>
+        <visual name='visual'><geometry><box><size>20 0.2 2</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Bricks</name></script></material></visual>
+        <collision name='collision'><geometry><box><size>20 0.2 2</size></box></geometry></collision>
+      </link>
+      <link name='Wall_West'><pose>-10 0 1 0 0 1.5708</pose>
+        <visual name='visual'><geometry><box><size>20 0.2 2</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Bricks</name></script></material></visual>
+        <collision name='collision'><geometry><box><size>20 0.2 2</size></box></geometry></collision>
+      </link>
+    </model>
+
+    <!-- 2 dãy kệ hàng (mỗi dãy 3 kệ) -->
+    <model name='rack_A1'><static>1</static><pose>-6 4 0.75 0 0 0</pose><link name='link'><visual name='visual'><geometry><box><size>0.2 3 1.5</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/MetalTreadPlate</name></script></material></visual><collision name='collision'><geometry><box><size>0.2 3 1.5</size></box></geometry></collision></link></model>
+    <model name='rack_A2'><static>1</static><pose>-1 4 0.75 0 0 0</pose><link name='link'><visual name='visual'><geometry><box><size>0.2 3 1.5</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/MetalTreadPlate</name></script></material></visual><collision name='collision'><geometry><box><size>0.2 3 1.5</size></box></geometry></collision></link></model>
+    <model name='rack_A3'><static>1</static><pose>4 4 0.75 0 0 0</pose><link name='link'><visual name='visual'><geometry><box><size>0.2 3 1.5</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/MetalTreadPlate</name></script></material></visual><collision name='collision'><geometry><box><size>0.2 3 1.5</size></box></geometry></collision></link></model>
+
+    <model name='rack_B1'><static>1</static><pose>-6 -4 0.75 0 0 0</pose><link name='link'><visual name='visual'><geometry><box><size>0.2 3 1.5</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/MetalTreadPlate</name></script></material></visual><collision name='collision'><geometry><box><size>0.2 3 1.5</size></box></geometry></collision></link></model>
+    <model name='rack_B2'><static>1</static><pose>-1 -4 0.75 0 0 0</pose><link name='link'><visual name='visual'><geometry><box><size>0.2 3 1.5</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/MetalTreadPlate</name></script></material></visual><collision name='collision'><geometry><box><size>0.2 3 1.5</size></box></geometry></collision></link></model>
+    <model name='rack_B3'><static>1</static><pose>4 -4 0.75 0 0 0</pose><link name='link'><visual name='visual'><geometry><box><size>0.2 3 1.5</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/MetalTreadPlate</name></script></material></visual><collision name='collision'><geometry><box><size>0.2 3 1.5</size></box></geometry></collision></link></model>
+
+    <!-- Pallet + thùng hàng (2 góc) -->
+    <model name='pallet_left'>
+      <static>1</static><pose>-8 -8 0.15 0 0 0</pose>
+      <link name='link'><visual name='visual'><geometry><box><size>1.2 1.2 0.3</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Wood</name></script></material></visual><collision name='collision'><geometry><box><size>1.2 1.2 0.3</size></box></geometry></collision></link>
+    </model>
+    <model name='box_left'>
+      <static>1</static><pose>-8 -8 0.65 0 0 0</pose>
+      <link name='link'><visual name='visual'><geometry><box><size>1.0 1.0 0.8</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Cardboard</name></script></material></visual><collision name='collision'><geometry><box><size>1.0 1.0 0.8</size></box></geometry></collision></link>
+    </model>
+
+    <model name='pallet_right'>
+      <static>1</static><pose>8 8 0.15 0 0 0</pose>
+      <link name='link'><visual name='visual'><geometry><box><size>1.2 1.2 0.3</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Wood</name></script></material></visual><collision name='collision'><geometry><box><size>1.2 1.2 0.3</size></box></geometry></collision></link>
+    </model>
+    <model name='box_right'>
+      <static>1</static><pose>8 8 0.65 0 0 0</pose>
+      <link name='link'><visual name='visual'><geometry><box><size>1.0 1.0 0.8</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Cardboard</name></script></material></visual><collision name='collision'><geometry><box><size>1.0 1.0 0.8</size></box></geometry></collision></link>
+    </model>
+
+    <!-- Thùng phuy -->
+    <model name='barrel'><static>1</static><pose>0 0 0.5 0 0 0</pose><link name='link'><visual name='visual'><geometry><cylinder><radius>0.4</radius><length>1</length></cylinder></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Plastic</name></script></material></visual><collision name='collision'><geometry><cylinder><radius>0.4</radius><length>1</length></cylinder></geometry></collision></link></model>
+
+    <!-- Xe nâng nhỏ -->
+    <model name='forklift'>
+      <static>1</static><pose>-7 -7 0 0 0 0.5</pose>
+      <link name='body'><visual name='visual'><geometry><box><size>1.8 1 1.2</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Yellow</name></script></material></visual><collision name='collision'><geometry><box><size>1.8 1 1.2</size></box></geometry></collision></link>
+      <link name='fork'><pose>1.0 0 0.7 0 0 0</pose><visual name='visual'><geometry><box><size>0.15 0.7 0.05</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/MetalTreadPlate</name></script></material></visual><collision name='collision'><geometry><box><size>0.15 0.7 0.05</size></box></geometry></collision></link>
+      <joint name='fork_joint' type='fixed'><parent>body</parent><child>fork</child></joint>
+    </model>
+
+    <!-- Một vài thùng carton nhỏ rải rác -->
+    <model name='cardboard_1'><static>1</static><pose>7 -5 0.2 0 0 0</pose><link name='link'><visual name='visual'><geometry><box><size>0.5 0.5 0.4</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Cardboard</name></script></material></visual><collision name='collision'><geometry><box><size>0.5 0.5 0.4</size></box></geometry></collision></link></model>
+    <model name='cardboard_2'><static>1</static><pose>-7 6 0.2 0 0 -0.2</pose><link name='link'><visual name='visual'><geometry><box><size>0.5 0.5 0.4</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Cardboard</name></script></material></visual><collision name='collision'><geometry><box><size>0.5 0.5 0.4</size></box></geometry></collision></link></model>
+
+    <!-- ========== VẬT CẢN DI ĐỘNG (KHÔNG VA CHẠM NHAU) ========== -->
+    <!-- Trụ đỏ: đi ngang trên y=-3, x từ -7 đến 2 -->
+    <model name='moving_red'>
+      <pose>-2.5 -3 0.5 0 0 0</pose>
+      <link name='body'>
+        <visual name='visual'><geometry><cylinder><radius>0.35</radius><length>1.0</length></cylinder></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Red</name></script></material></visual>
+        <collision name='collision'><geometry><cylinder><radius>0.35</radius><length>1.0</length></cylinder></geometry></collision>
+      </link>
+      <joint name='red_joint' type='prismatic'>
+        <parent>world</parent><child>body</child>
+        <axis><xyz>1 0 0</xyz></axis>
+        <limit><lower>-7</lower><upper>2</upper></limit>
+      </joint>
+      <plugin name='red_mover' filename='librotating_wall_plugin.so'>
+        <joint_name>red_joint</joint_name>
+        <amplitude>4.5</amplitude>
+        <speed>0.3</speed>
+      </plugin>
+    </model>
+
+    <!-- Trụ xanh: đi dọc trên x=3, y từ -7 đến 2 -->
+    <model name='moving_blue'>
+      <pose>3 -2.5 0.5 0 0 0</pose>
+      <link name='body'>
+        <visual name='visual'><geometry><cylinder><radius>0.35</radius><length>1.0</length></cylinder></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Blue</name></script></material></visual>
+        <collision name='collision'><geometry><cylinder><radius>0.35</radius><length>1.0</length></cylinder></geometry></collision>
+      </link>
+      <joint name='blue_joint' type='prismatic'>
+        <parent>world</parent><child>body</child>
+        <axis><xyz>0 1 0</xyz></axis>
+        <limit><lower>-7</lower><upper>2</upper></limit>
+      </joint>
+      <plugin name='blue_mover' filename='librotating_wall_plugin.so'>
+        <joint_name>blue_joint</joint_name>
+        <amplitude>4.5</amplitude>
+        <speed>0.3</speed>
+      </plugin>
+    </model>
+
+  </world>
+</sdf>

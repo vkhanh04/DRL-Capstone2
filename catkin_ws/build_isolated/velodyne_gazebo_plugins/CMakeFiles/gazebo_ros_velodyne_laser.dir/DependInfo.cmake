@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins/src/GazeboRosVelodyneLaser.cpp" "/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/build_isolated/velodyne_gazebo_plugins/CMakeFiles/gazebo_ros_velodyne_laser.dir/src/GazeboRosVelodyneLaser.cpp.o"
+  "/home/votinh/DRL-Capstone2/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins/src/GazeboRosVelodyneLaser.cpp" "/home/votinh/DRL-Capstone2/catkin_ws/build_isolated/velodyne_gazebo_plugins/CMakeFiles/gazebo_ros_velodyne_laser.dir/src/GazeboRosVelodyneLaser.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -30,7 +30,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins/include"
+  "/home/votinh/DRL-Capstone2/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/gazebo-11"

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/devel_isolated/multi_robot_scenario/lib/librotating_wall_plugin.pdb"
-  "/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/devel_isolated/multi_robot_scenario/lib/librotating_wall_plugin.so"
+  "/home/votinh/DRL-Capstone2/catkin_ws/devel_isolated/multi_robot_scenario/lib/librotating_wall_plugin.pdb"
+  "/home/votinh/DRL-Capstone2/catkin_ws/devel_isolated/multi_robot_scenario/lib/librotating_wall_plugin.so"
   "CMakeFiles/rotating_wall_plugin.dir/src/RotatingWallPlugin.cpp.o"
 )
 

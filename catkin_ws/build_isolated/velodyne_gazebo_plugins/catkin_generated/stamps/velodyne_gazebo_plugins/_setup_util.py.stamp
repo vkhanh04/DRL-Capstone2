@@ -268,7 +268,7 @@ if __name__ == '__main__':
 
         if not args.local:
             # environment at generation time
-            CMAKE_PREFIX_PATH = r'/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/devel_isolated/velodyne_description;/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/devel_isolated/multi_robot_scenario;/opt/ros/noetic'.split(';')
+            CMAKE_PREFIX_PATH = r'/home/votinh/DRL-Capstone2/catkin_ws/devel_isolated/velodyne_description;/home/votinh/DRL-Capstone2/catkin_ws/devel_isolated/multi_robot_scenario;/opt/ros/noetic'.split(';')
         else:
             # don't consider any other prefix path than this one
             CMAKE_PREFIX_PATH = []

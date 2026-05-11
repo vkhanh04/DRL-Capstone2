@@ -18,7 +18,7 @@ if not type -q bass
 end
 
 if test -z $_CATKIN_SETUP_DIR
-    set _CATKIN_SETUP_DIR /mnt/e/GitClone/DRL-robot-navigation/catkin_ws/install_isolated
+    set _CATKIN_SETUP_DIR /home/votinh/DRL-Capstone2/catkin_ws/install_isolated
 end
 
 set _SETUP_UTIL "$_CATKIN_SETUP_DIR/_setup_util.py"

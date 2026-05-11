@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins/include/velodyne_gazebo_plugins/GazeboRosVelodyneLaser.h
+/home/votinh/DRL-Capstone2/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins/include/velodyne_gazebo_plugins/GazeboRosVelodyneLaser.h
 ros/ros.h
 -
 ros/callback_queue.h
@@ -42,7 +42,7 @@ boost/thread/mutex.hpp
 boost/thread/lock_guard.hpp
 -
 
-/mnt/e/GitClone/DRL-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins/src/GazeboRosVelodyneLaser.cpp
+/home/votinh/DRL-Capstone2/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins/src/GazeboRosVelodyneLaser.cpp
 velodyne_gazebo_plugins/GazeboRosVelodyneLaser.h
 -
 algorithm
